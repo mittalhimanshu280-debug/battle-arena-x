@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Battle Arena X</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ background:#182b26;
+ color:white;
+ font-family:Arial;
+ text-align:center;
+}
+header{
+ padding:18px;
+ background:#101b19;
+ font-size:25px;
+ font-weight:bold;
+}
+#arena{
+ height:65vh;
+ margin:12px;
+ border:3px solid #8fae72;
+ border-radius:15px;
+ background:linear-gradient(#6e9562,#314b34);
+ position:relative;
+ overflow:hidden;
+}
+.player{
+ position:absolute;
+ bottom:30%;
+ left:45%;
+ font-size:55px;
+}
+.enemy{
+ position:absolute;
+ top:25%;
+ left:65%;
+ font-size:45px;
+}
+#info{padding:10px}
+button{
+ padding:14px 20px;
+ margin:5px;
+ border:0;
+ border-radius:10px;
+ background:#e5a52c;
+ font-weight:bold;
+}
+</style>
+</head>
+<body>
+<header>BATTLE ARENA X</header>
+<div id="info">
+ HEALTH: <span id="health">100</span>
+ | SCORE: <span id="score">0</span>
+</div>
+<div id="arena">
+ <div class="enemy" id="enemy">🎯</div>
+ <div class="player" id="player">🪖</div>
+</div>
+<button onclick="move(-20)">LEFT</button>
+<button onclick="move(20)">RIGHT</button>
+<button onclick="shoot()">FIRE 🔫</button>
+<script>
+let position=45;
+let score=0;
+let health=100;
+
+function move(x){
+ position=Math.max(0,Math.min(90,position+x));
+ document.getElementById("player").style.left=position+"%";
+}
+
+function shoot(){
+ score+=10;
+ document.getElementById("score").innerText=score;
+ document.getElementById("enemy").style.left=
+ Math.floor(Math.random()*80+10)+"%";
+}
+</script>
+</body>
+</html>
